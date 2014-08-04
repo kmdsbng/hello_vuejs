@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title></title>
+<style>
+li.done {
+  text-decoration: line-through;
+}
+</style>
+</head>
+<body>
+
+  <h1>Hello, VueJS!</h1>
+
+  <div id="demo">
+    <h2>{{title | capitalize}}</h2>
+    <ul>
+      <li
+        v-repeat="todos"
+        v-on="click: done = !done"
+        class="{{done ? 'done' : ''}}"
+      >
+        {{content}}
+      </li>
+    </ul>
+  </div>
+
+<script type="text/javascript" src="vue.js"></script>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript">
+  var vm = new Vue({
+    el: '#demo',
+    data: {
+        title: 'todos',
+        todos: [
+            {
+                done: true,
+                content: 'Learn JavaScript'
+            },
+            {
+                done: false,
+                content: 'Learn vue.js'
+            }
+        ]
+    }
+  });
+  vm.$el;
+  vm.$data;
+</script>
+</body>
+</html>
+
+
