@@ -15,10 +15,11 @@ li.done {
 
   <div id="demo">
     <h2>{{title | capitalize}}</h2>
+    <input type='button' v-on="click: addTodo" value="Add Todo">
     <ul>
       <li
         v-repeat="todos"
-        v-on="click: done = !done"
+        v-on="click: toggleDone(this)"
         class="{{done ? 'done' : ''}}"
       >
         {{content}}
@@ -29,6 +30,7 @@ li.done {
 <script type="text/javascript" src="vue.js"></script>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript">
+
   var vm = new Vue({
     el: '#demo',
     data: {
@@ -43,10 +45,17 @@ li.done {
                 content: 'Learn vue.js'
             }
         ]
+    },
+    methods: {
+      toggleDone: function(item) {
+        item.done = !item.done;
+      },
+      addTodo: function() {
+        vm.todos.push({done: false, content: 'Todo Item'});
+      }
     }
   });
-  vm.$el;
-  vm.$data;
+
 </script>
 </body>
 </html>
